@@ -16,7 +16,7 @@ if (!empty($_SESSION['active'])) {
       $query = mysqli_query($conexion, "SELECT u.idusuario, u.nombre, u.correo,u.usuario,r.idrol,r.rol FROM usuario u INNER JOIN rol r ON u.rol = r.idrol WHERE u.usuario = '$user' AND u.clave = '$clave'");
       mysqli_close($conexion);
       $resultado = mysqli_num_rows($query);
-      if ($resultado > 0) {
+      //if ($resultado > 0) {
         $dato = mysqli_fetch_array($query);
         $_SESSION['active'] = true;
         $_SESSION['idUser'] = $dato['idusuario'];
@@ -25,13 +25,13 @@ if (!empty($_SESSION['active'])) {
         $_SESSION['user'] = $dato['usuario'];
         $_SESSION['rol'] = $dato['idrol'];
         $_SESSION['rol_name'] = $dato['rol'];
-        header('location: sistema/');
-      } else {
-        $alert = '<div class="alert alert-danger" role="alert">
-              Usuario o Contraseña Incorrecta
-            </div>';
-        session_destroy();
-      }
+        header('location:sistema/');
+      //} else {
+        //$alert = '<div class="alert alert-danger" role="alert">
+        //      Usuario o Contraseña Incorrecta
+        //    </div>';
+       // session_destroy();
+      //}
     }
   }
 }
